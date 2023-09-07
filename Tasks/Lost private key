@@ -1,0 +1,4 @@
+How to take ssh of ec2 instance if you lost pvt key.
+1.	Create ec2 instance and give some data to check weather it is working or not(adduser user1).  
+2.	Create image by checking instance (in the image and template, create image and launch instance from ami).
+3.	Check second instance it have data present or not.
