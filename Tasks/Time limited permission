@@ -1,0 +1,37 @@
+•	Create IAM roles with time-limited permissions for EC2 instances?
+1.	Create IAM roles in the IAM service.
+2.	In the role select aws service.
+3.	In the use cases select EC2.
+4.	Then we have to select policy of time limited permission for that we have to create time limited permission
+5.	Policy for time limited permission.                                                                                                                                         
+       {
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Statement1",
+            "Effect": "Allow",
+            "Action": "EC2:*",
+            "Resource": "*",
+            "Condition": {
+                "DateGreaterThan": {
+                    "aws:CurrentTime": "2023-09-02T00:00:00Z"
+                },
+                "DateLessThan": {
+                    "aws:CurrentTime": "2023-12-31T23:59:59Z"
+                }
+            }
+        }
+    ]
+}
+[Date range for time limited access for ec2 instance]
+
+6.	Click next then enter role name and then create role.
+
+
+
+
+
+
+
+
+
