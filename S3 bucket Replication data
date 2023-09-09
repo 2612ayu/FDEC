@@ -1,0 +1,11 @@
+1.	Create s3 bucket(original). Give it a unique name  and base region.
+2.	Acl enabled (File sharing)
+3.	Block all public access uncheck ,give public access
+4.	Bucket versioing should be enabled (* taki version update hone pr pata lage)
+5.	Create bucket
+6.	upload some file to the bucket
+7.	select Bucket suboption “management” . create replication rule 
+8.	give replication rule configuration name and status is enable
+9.	In source bucket apply to all object
+10.	Destination choose a bucket or browse s3 bucket of second bucket and it’s also shows it’s region
+11.	Iam role in this create new role and save it
