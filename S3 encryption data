@@ -1,0 +1,31 @@
+1.	Create s3 bucket,same as above
+2.	Do changes in bucket policy for 
+3.	A)Getobject “allow”     b)Putobject “deny”and give condition not equals, in the key “s3:x-amz-server-side-encryption” and for value “aws:kms” then create policy
+
+{
+    "Version": "2012-10-17",
+    "Id": "Policy1693318696343",
+    "Statement": [
+        {
+            "Sid": "Stmt1693318635381",
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "s3:PutObject",
+            "Resource": "arn:aws:s3:::standard-encryption/*",
+            "Condition": {
+                "StringNotEquals": {
+                    "s3:x-amz-server-side-encryption": "aws:kms"
+                }
+            }
+        },
+        {
+            "Sid": "Stmt1693318694404",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::standard-encryption/*"
+        }
+    ]
+}
+
+4.	Upload file and in the properties specify an encryption key ,in encryption setting use bucket setting for delete encryption.
