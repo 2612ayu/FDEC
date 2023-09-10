@@ -1,0 +1,51 @@
+	VPC(Virtual private cloud)
+
+•	VPC
+1)	Go to Your vpc service in this service select create vpc.
+2)	In resource to create select vpc only and give name to vpc.
+3)	IPv4 CIDR block select IPv4 CIDR manual input (192.168.0.0/16) and give IPv4 CIDR ip address.
+4)	IPv6 CIDR block select no IPv6 CIDR block and give tenancy to be default.
+
+•	Subnets
+1)	Create subnet.
+2)	 VPC id ,those se create vpc we have to select those vpc in the drop down.
+3)	In Subnet settings give subnet name and select availability zone (Mumbai ap-south-1a) .
+4)	We will use (mostly create in 1a,1b and  1c not use).
+5)	Then IPv4 CIDR block we will give (192.168.1.0/24).
+6)	Click on Create subnet and it will create subnet.
+
+•	Route Table
+1)	Create route table.
+2)	In route table settings give route table name and select vpc from dropdown which you created.
+3)	Click on create route table.
+4)	After creating do changes in subnet association explicit subnet association.
+5)	Do edit subnet associations  add it and do save associations.
+6)	Edit route add route 0.0.0.0/0 and select target internet gateway which you created and do save changes.
+
+•	Internet gateways
+1)	Create internet gateway.
+2)	In internet gateway settings give name.
+3)	Click on create internet gateway and it will created.
+4)	After creating it attach vpc to it for this select internet gateway and go to actions.
+5)	Available vpc are visible in dropdown select it attach vpc.
+
+•	Ec2 instance
+1)	Launch instance.
+2)	Give name to the instance.
+3)	Select AMI(amazon machine image amazon linux).
+4)	Select instance type default.
+5)	Network settings we have to edit it.
+6)	Select vpc which you created and select subnet.
+7)	Enable auto-assign public ip.
+8)	In the firewall select security group for this we have to create new security group.
+9)	Select inbound security group rules and we have to give ssh, http permission.
+10)	After in the advance details we have to write script
+#!/bin/bash
+sudo yum update
+sudo yum install httpd –y
+sudo echo “<h1> Hello </h1>” > /var/www/html/index.html
+sudo systemctl start httpd
+sudo systemctl enable httpd
+11)	Click on launch instance and copy public address on browser.
+
+
