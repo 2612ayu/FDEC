@@ -1,0 +1,55 @@
+•	Create Application load balancer.
+
+	Instance
+1)	Launch instance and give it to name and tags.
+2)	Select AMI and instance type.
+3)	Key pair(login) give key pair name from dropdown.
+4)	In the network settings create security group allow SSH, allow HTTP.
+5)	In the advance details write user data.
+#!/bin/bash
+sudo yum update
+sudo yum install httpd –y
+sudo echo “</h1> Hello $(hostname –f)! </h1>” > /var/www/html/index.html
+Sudo systemctl start httpd
+Sudo systemctl enable httpd
+6)	Write user data script for laptop.
+#!/bin/bash
+sudo yum update
+sudo yum install httpd –y
+sudo mkdir /var/www/html/laptop
+sudo echo “</h1> Laptop $(hostname –f)! </h1>” > /var/www/html/laptop/index.html
+Sudo systemctl start httpd
+Sudo systemctl enable httpd
+7)	Write user data script for mobile.
+#!/bin/bash
+sudo yum update
+sudo yum install httpd –y
+sudo mkdir /var/www/html/mobile
+sudo echo “</h1> Mobile $(hostname –f)! </h1>” > /var/www/html/mobile/index.html
+Sudo systemctl start httpd
+Sudo systemctl enable httpd
+8)	Take same security group for laptop, mobile.
+
+	Target Groups
+9)	Create target group.
+10)	Choose a target type Instances  and give target group name.
+11)	Click next after this in the available instances it have dropdown and select instances.
+12)	After selecting instances click on including as pending below.
+13)	Click on create target group.
+14)	Do same for laptop, mobile. Only we have to give health check path in the health checks. (/laptop, /mobile).
+
+	Load balancers
+15)	Create load balancer.
+16)	Application load balancer.
+17)	In the basic configuration  give load balancer name.
+18)	Select scheme Internet-facing and IP address type IPv4.
+19)	Network mapping from dropdown we have to select VPC.
+20)	Select same security group which is used in instance.
+21)	Listeners and routing we have to select target group which we want to target.
+22)	Click on create load balancer and it will create application load balancer.
+23)	For checking copy DNS name and run on browser.
+
+
+
+
+
