@@ -1,0 +1,63 @@
+•	Create Network load balancer.
+
+	Instance
+1)	Launch instance and give it to name and tags.
+2)	Select AMI and instance type.
+3)	Key pair(login) give key pair name from dropdown.
+4)	In the network settings create security group allow SSH, allow HTTP.
+5)	In the advance details write user data.
+#!/bin/bash
+sudo yum update
+sudo yum install httpd –y
+sudo echo “</h1> Hello $(hostname –f)! </h1>” > /var/www/html/index.html
+Sudo systemctl start httpd
+Sudo systemctl enable httpd
+6)	Write user data script for laptop.
+#!/bin/bash
+sudo yum update
+sudo yum install httpd –y
+sudo mkdir /var/www/html/laptop
+sudo echo “</h1> Laptop $(hostname –f)! </h1>” > /var/www/html/laptop/index.html
+Sudo systemctl start httpd
+Sudo systemctl enable httpd
+7)	Write user data script for mobile.
+#!/bin/bash
+sudo yum update
+sudo yum install httpd –y
+sudo mkdir /var/www/html/mobile
+sudo echo “</h1> Mobile $(hostname –f)! </h1>” > /var/www/html/mobile/index.html
+Sudo systemctl start httpd
+Sudo systemctl enable httpd
+8)	Take same security group for laptop, mobile.
+
+	Target Groups
+9)	Create target group.
+10)	Choose a target type Instances  and give target group name.
+11)	Click next after this in the available instances it have dropdown and select instances.
+12)	After selecting instances click on including as pending below.
+13)	Click on create target group.
+14)	Do same for laptop, mobile. Only we have to give health check path in the health checks. (/laptop, /mobile).
+15)	Create target group and choose a target type application load balancer.
+16)	Give a target group name and click on next.
+17)	After that we have to register targets here we have to create application load balancer.
+
+	Application Load Balancer
+1)	Give a load balancer name like (myalb).
+2)	Give default scheme and ip address type.
+3)	In network mapping select default VPC.
+4)	Take a same security group which is use in instance.
+5)	In listeners and routing select target for port HTTP 80(Home), 81(Mobile),82(laptop).
+6)	Click on create load balancer and it will create application load balancer.
+
+	Network Load Balancer
+1)	Create load balancer.
+2)	Click on network load balancer create.
+3)	Give it a name to a load balancer.
+4)	Scheme and ip address type make it default.
+5)	In network mapping select a default VPC.
+6)	Same security group we have to attached.
+7)	In listeners and routing  select a target group which you created for application load balancer.
+8)	Click on create load balancer.
+9)	It will create a network load balancer.
+10)	For checking network load balancer copy dns name and run on browser.
+
