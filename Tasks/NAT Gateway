@@ -1,0 +1,75 @@
+	NAT GATEWAY
+•	VPC(VIRTUAL PRIVATE CLOUD)
+1)	Create vpc .
+2)	In vpc settings click on vpc only.
+3)	Give a proper name to vpc.
+4)	In IPv4 CIDR block take manual input(192.168.0.0/16).
+5)	Tenancy must be default.
+6)	And create vpc it will create vpc.
+
+•	Subnets
+1)	Create subnet.
+2)	Select vpc id in dropdown which you created vpc.
+3)	Give a subnet name ,availability zone.
+4)	Give manual IPv4 CIDR block (192.168.1.0/24).
+5)	We have to create 2 public ip and  2 private ip.
+6)	Create subnet and it will create subnet.
+
+•	Internet Gateway
+1)	Create internet gateway.
+2)	Give a proper name to it.
+3)	Create internet gateway and it will create internet gateway.
+4)	Attach vpc to it.
+
+•	Nat gateways
+1)	Create nat gateway.
+2)	Give a proper name to nat gateway.
+3)	Select subnet public subnet-2 where we have to created nat gateway.
+4)	Connection type must be public .
+5)	Allocate elastic IP it will generate elastic ip.
+6)	Create Nat gateway and it will create nat gateway.
+
+•	Route tables
+1)	Create route table.
+2)	Give a proper name to it and select vpc from dropdown which you created.
+3)	First we created route table for public .
+4)	Go to subnet associations and edit it select public subnet.
+5)	Go to edit routes here destination (0.0.0.0/0) .
+6)	Target is internet gateway for public and do save changes.
+7)	Second we have to create route table for private.
+8)	Give a proper name select vpc.
+9)	Create route table ,go to private route table.
+10)	Edit subnet associations select private subnet and save associates.
+11)	Go to edit routes add route 0.0.0.0/0 and have target nat gateway which you created.
+12)	Save changes it will create.
+
+•	Ec2 instance
+1)	Launch instances.
+2)	Give a name to instance (JMS).
+3)	Select AMI, instance type and in dropdown select key.
+4)	Edit network settings select vpc which you created.
+5)	Select subnet (public subnet-2) where we created nat gateway.
+6)	Auto assign public ip must be enable.
+7)	Select security group (jms).
+8)	In security group edit inbound rules ssh(0.0.0.0/0) and another is All ICMP – Ipv4 and select my ip and save rules.
+9)	And launch instance for public.
+10)	Launch another instance for private,give a name to it.
+11)	Select ami ,instance type and key.
+12)	Edit network settings select vpc.
+13)	Select subnet (private subnet -1).
+14)	Auto assign public ip must be disable (because it is private).
+15)	Select security group ssh,ALL ICMP-IPv4.
+16)	And launch instance for private.
+
+
+
+•	CMD
+1)	Connect with public instance(jump server)[ssh –I keyname username@public ip].
+2)	Go to public instance cmd and ping to private instance (in private instance there is no public ip,copy private ip) and check it.
+3)	If we get private ip means everything is working.
+4)	Open cmd where key is located in pc and send that key to our jms.
+5)	For this secure copy command we use [scp –i keyname filename username@public ip:folder path] /home/ec2-user.
+6)	If file is copied then change permission to 400 of key [chmod 400 keyname].
+7)	We will try connect with private instance. Write ssh command and see if it is connected[ssh -i keyname username@private-ip].
+
+
