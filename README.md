@@ -1,2 +1,2 @@
 # FDEC
-Task given and completed.
+All given tasks are present in their respective folders .
