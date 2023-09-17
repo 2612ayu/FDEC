@@ -1,0 +1,65 @@
+***Cloudwatch agent***
+Launch ec2 instance.
+Give it a proper name to ec2 instance.
+Select AMI	 and key for ec2 instance.
+Allow http port (80) to run nginx service.
+Install nginx service.(sudo yum install nginx).
+start nginx service.(sudo systemctl start nginx).
+Enable nginx service.(sudo systemctl enable nginx).
+Check with public ip of instance weather nginx service service is running or not.
+On browser if nginx service is running it means you successfully install nginx service.
+Create a IAM role.
+Click on create role select aws service of ec2and click on next.
+Select policy  cloudwatchfullaccess and click on next.
+After clicking nest give a role name and create role.
+After creating role go to instance, select the instance and click on actions.
+In the actions go to security there is option of Modify IAM role.
+Change directory to /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.d/.
+Create here json file with the help of editor and give name amazon-cloudwatch-agent.json. (sudo vim amazon-cloudwatch-agent.json).
+Write here for access log and error log.
+{
+"agent": {
+    "metrics_collection_interval": 10,
+    "run_as_user": "cwagent"
+    },
+      "logs": {
+        "logs_collected": {
+          "files": {
+            "collect_list": [
+              {
+                "file_path": "/var/log/nginx/access.log",
+                "log_group_name": "access.log",
+                "log_stream_name": "access.log",
+                "timezone": "UTC"
+              },
+              {
+                "file_path": "/var/log/nginx/error.log",
+                "log_group_name": "error.log",
+                "log_stream_name": "error.log",
+                "timezone": "UTC"
+              }
+            ]
+          }
+        },
+        "log_stream_name": "my_log_stream_name",
+        "force_flush_interval" : 15
+      }
+    }
+Save this file and and change directory to /etc.
+Install cloudwatch-agent service.(sudo yum install amzon-cloudwatch-agent).
+Start this service amazon-cloudwatch-agent.(sudo systemctl start amazon-cloudwatch-agent.service).
+Enable it amazon-cloudwatch-agent.(sudo systemctl enable amazon-cloudwatch-agent.service).
+Restart the nginx service.(sudo systemctl restart nginx).
+Check in cloudwatch service there is logs.
+In the logs go to log groups.
+In the log groups access.log and error.log are present so it will generate logs.
+
+
+
+
+
+
+
+
+
+
