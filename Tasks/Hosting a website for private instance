@@ -1,0 +1,86 @@
+***Host a website for private instance***
+Repeat previous steps.
+Launch ec2 instance.
+Launch public instance give it proper name public.
+In the network settings go to edit.
+Select vpc which you created.
+Select subnet which you want to create as jump server.
+Auto assign public ip must be enable.
+Create security group with rule 22,80 port.
+Click on launch instance.
+Create 2 private instance.
+Click on launch instance and give name private instance-1.
+Select AMI and key.
+Edit network settings for this go to edit.
+Select vpc which you created.
+Select subnet private-1.
+Auto assign public ip must be disable(because it is private).
+Create security group with rule with 22 for ssh, ALL ICMP IPv4 in the CIDR block we have to select jump server security group, http CIDR block have also jump server security group.
+Click on launch instance.
+Same as for private instance-2.
+Select AMI and key.
+In network settings select vpc.
+Subnet have private-2.
+Auto assign public ip must be disable.
+Select existing security group of private-1 instance.
+Click on launch instance.
+In the public jump server instance open it.
+Where key present go to cmd and connect with instance(ssh –I keyname username@public ip).
+After connect with instance do system update(sudo yum update).
+Install nginx service(sudo yum install nginx).
+Start  nginx service(sudo systemctl start nginx).
+Enable nginx service(sudo systemctl enable nginx).
+We have copy key in the public instance to access private instance(scp –i keyname filename username@public ip:/home/ec2-user[go to cmd where key is present and give command].
+Go to private instance-1(ssh –i keyname username@private ip).
+In the private instance-1 firstly do system update(sudo yum update).
+Install httpd service(sudo yum install httpd).
+Start httpd service(sudo systemctl start httpd).
+Enable httpd service(sudo systemctl enable httpd).
+Go to index file if not present create it.
+For this change directory /var/www/html/(cd /var/www/html/).
+Here we have to create index file(sudo touch index.html).
+After creating index file we have to write in the index file.
+Open with the help of editor(sudo vim index.html).
+In the index file to something on browser we write this in index file.
+         echo”<h1> Hello </h1>” > /var/www/html/index.html
+Save the index file(:wq!),logout from private instance.
+We are now present in public ip then we go to  private instance-2.
+Install httpd service(sudo yum install httpd).
+Start httpd service(sudo systemctl start httpd).
+Enable httpd service(sudo systemctl enable httpd).
+Go to index file if not present create it.
+For this change directory /var/www/html/(cd /var/www/html/).
+Here we have to create index file(sudo touch index.html).
+After creating index file we have to write in the index file.
+Open with the help of editor(sudo vim index.html).
+In the index file to something on browser we write this in index file.
+         echo”<h1> Hello in second private instance</h1>” > /var/www/html/index.html
+Save the index file(:wq!),logout from private instance.
+Now we are present in public jump server instance.
+Here we have to edit configuration file of nginx.
+Change directory to /etc/nginx/(cd /etc/nginx).
+We have to edit nginx.conf file with the help of vim editor(sudo vim nginx.conf).
+In this file 
+http {
+upstream backend {
+                            server    private_ip;
+                            server    private_ip;
+                                  }
+.
+.
+. 
+          Server {
+Listen 80;
+Listen [ :: ]80;
+Server_name    public_ip;
+Location / {
+                   Proxy_pass http://backend;
+}
+.
+.
+}
+
+After saving (:wq!) this nginx configuration file.
+Restart the nginx service(sudo systemctl restart nginx).
+Take public ip address and run on browser it will access private ip with the help of public ip.
+
