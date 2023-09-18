@@ -1,0 +1,21 @@
+Launch ec2 instance.
+Click on launch instance.
+Give a proper name to it.
+Select ami and key.
+Create security group ssh 22,port 80 and another port custom TCP 8081 and click on launch instance.
+It will launch instance.
+Take ssh and go in the instance.
+Install update(sudo yum update).
+Install nginx service(sudo yum install nginx).
+Start nginx service(sudo systemctl start nginx).
+Enable nginx service(sudo systemctl enable nginx).
+Check nginx service is working or not on browser.
+Take public ip of instance and run on browser.
+Change listen in configuration file.
+Change directory /etc/nginx(cd /etc/nginx/ ).
+Edit configuration file with the help of editor.
+Open configuration file(sudo vim nginx.conf).
+Update listen [8081].
+Save this file.
+Restart nginx service(sudo systemctl restart nginx).
+Run on browser public ip (port :8081).
