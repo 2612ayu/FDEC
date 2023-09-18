@@ -1,7 +1,7 @@
 ***Cloudwatch agent***
 Launch ec2 instance.
 Give it a proper name to ec2 instance.
-Select AMI	 and key for ec2 instance.
+Select AMI and key for ec2 instance.
 Allow http port (80) to run nginx service.
 Install nginx service.(sudo yum install nginx).
 start nginx service.(sudo systemctl start nginx).
