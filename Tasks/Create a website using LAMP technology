@@ -1,0 +1,27 @@
+aunch ec2 instance.
+Click on launch instance.
+Select AMI and key.
+In security group ssh (22), http (80),https (443).
+Take ssh of instance and go to instance.
+Update the system(sudo yum update).
+Install httpd service(sudo yum install httpd).
+Start httpd service(sudo systemctl start httpd).
+Enable httpd service(sudo systemctl enable httpd).
+Install mysql[mariadb] service(sudo yum install mariadb105-server.x86_64.
+Start mariadb service(sudo systemctl start mariadb.service).
+Enable mariadb service(sudo systemctl enable mariadb.service).
+Install php service(sudo yum install php8.1.x86_64 –y).
+Start php service(sudo systemctl start php-fpm.service).
+Enable php service(sudo systemctl enable php-fpm.service).
+To create information php page in httml.
+Change directory to nginx in the html(cd /var/www/html/).
+Here we have create information page of php(sudo vim info.php).
+We have write in the php file be like.
+<? 
+Php phpinfo();
+?>
+Save this file (:wq!).
+Restart the httpd service(sudo systemctl restart httpd).
+Check on browser it is working or not for this copy public address.
+httpd page will load for checking information page of php(public_ip/info.php).
+It will show php information page on browser. 
