@@ -1,4 +1,4 @@
-aunch ec2 instance.
+Launch ec2 instance.
 Click on launch instance.
 Select AMI and key.
 In security group ssh (22), http (80),https (443).
