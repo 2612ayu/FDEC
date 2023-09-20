@@ -18,7 +18,7 @@ Change directory to in the html(cd /var/www/html/).
 Here we have create information page of php(sudo vim info.php).
 We have write in the php file be like.
 <? 
-Php phpinfo();
+php phpinfo();
 ?>
 Save this file (:wq!).
 Restart the httpd service(sudo systemctl restart httpd).
