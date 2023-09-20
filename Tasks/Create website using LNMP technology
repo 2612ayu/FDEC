@@ -1,28 +1,28 @@
-Launch ec2 instance.
-2)	Click on launch instance.
-3)	Select AMI and key.
-4)	In security group ssh (22), http (80).
-5)	Take ssh of instance and go to instance.
-6)	Update the system(sudo yum update).
-7)	Install nginx service(sudo yum install nginx).
-8)	Start nginx service(sudo systemctl start nginx).
-9)	Enable nginx service(sudo systemctl enable nginx).
-10)	Install mysql[mariadb] service(sudo yum install mariadb105-server.x86_64.
-11)	Start mariadb service(sudo systemctl start mariadb.service).
-12)	Enable mariadb service(sudo systemctl enable mariadb.service).
-13)	Install php service(sudo yum install php8.1.x86_64 –y).
-14)	Start php service(sudo systemctl start php-fpm.service).
-15)	Enable php service(sudo systemctl enable php-fpm.service).
-16)	To create information php page in nginx.
-17)	Change directory to nginx in the html(cd /usr/share/nginx/html).
-18)	Here we have create information page of php(sudo vim info.php).
-19)	We have write in the php file be like.
+***Launch ec2 instance***.
+Click on launch instance.
+Select AMI and key.
+In security group ssh (22), http (80).
+Take ssh of instance and go to instance.
+Update the system(sudo yum update).
+Install nginx service(sudo yum install nginx).
+Start nginx service(sudo systemctl start nginx).
+Enable nginx service(sudo systemctl enable nginx).
+Install mysql[mariadb] service(sudo yum install mariadb105-server.x86_64.
+Start mariadb service(sudo systemctl start mariadb.service).
+Enable mariadb service(sudo systemctl enable mariadb.service).
+Install php service(sudo yum install php8.1.x86_64 –y).
+Start php service(sudo systemctl start php-fpm.service).
+Enable php service(sudo systemctl enable php-fpm.service).
+To create information php page in nginx.
+Change directory to nginx in the html(cd /usr/share/nginx/html).
+Here we have create information page of php(sudo vim info.php).
+We have write in the php file be like.
 <? 
-Php phpinfo();
+phpinfo();
 ?>
-20)	Save this file (:wq!).
-21)	Restart the nginx service(sudo systemctl restart nginx).
-22)	Check on browser it is working or not for this copy public address.
-23)	Nginx page will load for checking information page of php(public_ip/info.php).
-24)	It will show php information page on browser. 
+Save this file (:wq!).
+Restart the nginx service(sudo systemctl restart nginx).
+Check on browser it is working or not for this copy public address.
+Nginx page will load for checking information page of php(public_ip/info.php).
+It will show php information page on browser. 
 
