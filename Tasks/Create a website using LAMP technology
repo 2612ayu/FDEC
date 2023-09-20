@@ -7,7 +7,7 @@ Update the system(sudo yum update).
 Install httpd service(sudo yum install httpd).
 Start httpd service(sudo systemctl start httpd).
 Enable httpd service(sudo systemctl enable httpd).
-Install mysql[mariadb] service(sudo yum install mariadb105-server.x86_64.
+Install mysql[mariadb] service(sudo yum install mariadb105-server.x86_64).
 Start mariadb service(sudo systemctl start mariadb.service).
 Enable mariadb service(sudo systemctl enable mariadb.service).
 Install php service(sudo yum install php8.1.x86_64 –y).
