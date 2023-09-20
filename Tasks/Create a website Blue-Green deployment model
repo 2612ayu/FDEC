@@ -1,0 +1,39 @@
+***Create website using Blue/Green deployment model***
+Launch template.
+We have to create 2 instances.
+Click on launch ec2 instance.
+Give proper name to instance blue.
+Select AMI and key.
+In security group ssh (22),http (80).
+Click on launch instance.
+Give proper name to instance green.
+Select AMI and key.
+In security group ssh (22),http (80).
+Click on launch instance.
+Create load balancer.
+Create application load balancer.
+Give proper load balancer name.
+In the scheme choose internet-facing and ip address type choose IPv4.
+In the mappings select all zones.
+Select security group.
+In the listeners and routing select protocol http , port 80.
+Default action have target group we have to create.
+If target group not present then we have to create it click on create target group.
+Choose target type is instance.
+Give a proper target group name.
+Go with the default setting and click on next.
+There is register targets select instance and click on include as pending below.
+Then click on create target group it will create target group.
+Create target group for blue and green server.
+Then go to load balancer refresh it.
+Go with default setting and click on create load balancer it will create.
+Select load balancer in the listeners and rule edit manage rules.
+In the edit rules after it go to another page select target group.
+Go to actions and do edit rule.
+In the edit rule action types forward to target groups.
+There is already one target group is present we have to add another target group.
+Click on add target group and select another target group.
+In the weight we give 8,2 as per need.
+Click on save changes.
+Copy dns name of load balancer.
+Try to run on browser it will show green and blue server on same page.
