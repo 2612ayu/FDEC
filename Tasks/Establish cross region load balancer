@@ -1,0 +1,24 @@
+Search elastic beanstalk service on aws.
+Create environment in environment tier select web server environment.
+Give a proper application name.
+It will auto create environment name.
+Give domain name and check availability, description.
+Choose a platform tomcat server.
+In the application code upload your local code and give version label.
+Go with default settings and click on next.
+In service role select existing service role.
+Create role for service elastic beanstalk.
+Create role, trusted entity type aws service.
+Choose service elastic beanstalk and click on next.
+It will show AWSElasticBeanstalkEnhancedHealth, AWSElasticBeanstalkService  permission and click on next.
+Give a role name and click on next.
+It will create role for elastic beanstalk.
+Select role which you created and ec2 key and instance profile.
+Click on next, select vpc default.
+Public ip address must be enable, select instance subnet, databse subnet.
+Go with default setting and click on next.
+Select security group default and go with default setting and click on next.
+In the monitoring system is basic and managed updates is uncheck.
+Go with default setting and click on next.
+Review all steps and create environment.
+Paste domain on browser it will show student registration page.
