@@ -1,5 +1,5 @@
 ***Create website using Blue/Green deployment model***
-Launch template.
+
 We have to create 2 instances.
 Click on launch ec2 instance.
 Give proper name to instance blue.
@@ -58,4 +58,4 @@ Click on add target group and select another target group.
 In the weight we give 8,2 as per need.
 Click on save changes.
 Copy dns name of load balancer.
-Try to run on browser it will show green and blue server on same page.
+Run on browser it will show green and blue server on same page.
