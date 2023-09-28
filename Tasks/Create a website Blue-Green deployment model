@@ -10,6 +10,28 @@ Give proper name to instance green.
 Select AMI and key.
 In security group ssh (22),http (80).
 Click on launch instance.
+Take public ip of instance and go in the instance.
+Firstly we do for blue instance.
+Install httpd service in the instance(sudo yum install httpd).
+Start httpd service(sudo systemctl start httpd).
+Enable httpd service(sudo systemctl enable httpd).
+We have to write in index file.
+Change directory to html (cd /var/www/html/).
+In this create a file index.html(sudo touch index.html).
+In index.html we have to write with the help of vim editor(sudo vim index.html).
+For blue instance we write as "Blue server" and save this file.
+Restart the httpd service(sudo systemctl restart httpd).
+Take public ip of another instance and go in the instance.
+Secondly we do for green instance.
+Install httpd service in the instance(sudo yum install httpd).
+Start httpd service(sudo systemctl start httpd).
+Enable httpd service(sudo systemctl enable httpd).
+We have to write in index file.
+Change directory to html (cd /var/www/html/).
+In this create a file index.html(sudo touch index.html).
+In index.html we have to write with the help of vim editor(sudo vim index.html).
+For green instance we write as "Green server" and save this file.
+Restart the httpd service(sudo systemctl restart httpd).
 Create load balancer.
 Create application load balancer.
 Give proper load balancer name.
