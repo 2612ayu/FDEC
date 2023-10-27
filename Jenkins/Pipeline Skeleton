@@ -1,0 +1,10 @@
+pipeline {      #FIFO
+    agent any  #WE NEED AGENT TO WORK IN PIPELINE
+    stages {   #STARTING AREA
+        stage('Hello') {  #NAME OF PARTICULAR STAGE WE CAN ADD NAME AS PER OUR CONVIENECE
+            steps {  #THE THING WE WANT TO PERFORM
+                echo 'Hello World'  #WRITE AS PER NEED
+            }
+        }
+    }
+}
