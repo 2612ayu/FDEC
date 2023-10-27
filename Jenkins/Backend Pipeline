@@ -16,9 +16,6 @@ sudo systemctl status Jenkins
 }
 Take public ip of instance with port 8080 [public_ip:8080].
 Give security group all traffic.
-Change sudoers password for all ( sudo vim /etc/sudoers ).
-In this below root  add this
-[ jenkins ALL=(ALL) NOPASSWD:ALL ].
 Save this file and login to Jenkins ( public_ip:8080 ).
 Give administrative password which is available in Jenkins login page and this path is (sudo cat /var/lib/jenkins/secrets/initialAdminPassword ).
 After that give username ,password, Full name and email id and save it.
@@ -38,6 +35,9 @@ pipeline {
                 git clone https://github.com/2612ayu/student-ui.git '''
             }
         }
+Change sudoers password for all ( sudo vim /etc/sudoers ).
+In this below root  add this
+[ jenkins ALL=(ALL) NOPASSWD:ALL ].
 Click on apply and save it.
 Build now it will build the steps.
 This stage will download  git and do git clone in Jenkins.
