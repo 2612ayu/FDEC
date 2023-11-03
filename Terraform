@@ -10,8 +10,8 @@ terraform {
 
 provider "aws" {
   region     = "us-east-1"
-  access_key = "AKIAQA5GF5YSEHIOWW5D"
-  secret_key = "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"
+  access_key = "***************"
+  secret_key = "***************"
 }
 resource "aws_vpc" "vpc" {
   cidr_block = "192.168.0.0/16"
